@@ -1,6 +1,9 @@
 import json
 import socket
 import os
+from datetime import datetime
+
+
 host = "localhost"
 port = 5001
 server = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
@@ -19,9 +22,15 @@ while(True):
         error = os.system("touch "+message["value"])
     print("Orden: "+recibido.decode(encoding="ascii", errors="ignore"))
     if(error != 0):
-        enviar = "Ocurrio un error al ejecutar la acción de "+("crear carpeta" if message["action"] == "1" else "crear archivo")
+        enviar = "Ocurrio un error al ejecutar la acción de "+("crear carpeta" if message["action"] == "1" else "crear archivo")    
     else :
         enviar = "Accion realizada : "+("crear carpeta" if message["action"] == "1" else "crear archivo")
+    now = datetime.now()
+    print(now)
+    current_time = now.strftime("%H:%M:%S")
+    f = open("log.txt","a")
+    f.write(enviar+" => date and time:"+current_time+"\n")
+    f.close()
     active_connection.send(enviar.encode(encoding="ascii",errors="ignore"))
     
 
