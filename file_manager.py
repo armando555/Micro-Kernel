@@ -28,7 +28,7 @@ while(True):
     now = datetime.now()
     print(now)
     current_time = now.strftime("%H:%M:%S")
-    f = open("log.txt","a")
+    f = open("log_file_manager.txt","a")
     f.write(enviar+" => date and time:"+current_time+"\n")
     f.close()
     active_connection.send(enviar.encode(encoding="ascii",errors="ignore"))

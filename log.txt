@@ -1,2 +1,0 @@
-Ocurrio un error al ejecutar la acción de crear carpeta
-Accion realizada : crear archivodate and time:20:49:03
