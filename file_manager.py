@@ -16,17 +16,17 @@ while(True):
     recibido = active_connection.recv(1024)
     message = json.loads(recibido.decode(encoding="ascii", errors="ignore"))
     error = 1
-    if(message["action"]=="1"):
-        error = os.system("mkdir "+message["value"])
-    elif (message["action"]=="2"):
-        error = os.system("touch "+message["value"])
-    elif (message["value"]=="off"):
+    if(message["cmd"]=="1"):
+        error = os.system("mkdir "+message["msg"])
+    elif (message["cmd"]=="2"):
+        error = os.system("touch "+message["msg"])
+    elif (message["msg"]=="off"):
         break        
     print("Orden: "+recibido.decode(encoding="ascii", errors="ignore"))
     if(error != 0):
-        enviar = "Ocurrio un error al ejecutar la acción de "+("crear carpeta" if message["action"] == "1" else "crear archivo")    
+        enviar = "Ocurrio un error al ejecutar la acción de "+("crear carpeta" if message["cmd"] == "1" else "crear archivo")    
     else :
-        enviar = "Accion realizada : "+("crear carpeta" if message["action"] == "1" else "crear archivo")
+        enviar = "Accion realizada : "+("crear carpeta" if message["cmd"] == "1" else "crear archivo")
     now = datetime.now()
     print(now)
     current_time = now.strftime("%H:%M:%S")
