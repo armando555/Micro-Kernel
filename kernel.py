@@ -1,9 +1,13 @@
 import socket
 import json
 host = "localhost"
-port = 5001
+portF = 5001
+portA = 5002
 objsocket = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
-objsocket.connect((host,port))
+objsocket1 = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
+objsocket.connect((host,portF))
+objsocket1.connect((host,portA))
+
 print("starting client")
 
 while(True):
@@ -13,7 +17,10 @@ while(True):
     message["action"] = operation
     message["value"] = value
     enviar = json.dumps(message)
-    objsocket.send(enviar.encode(encoding="ascii", errors="ignore"))
+    if(operation == "3"):
+        objsocket1.send(enviar.encode(encoding="ascii", errors="ignore"))
+    else:
+        objsocket.send(enviar.encode(encoding="ascii", errors="ignore"))
     recibido = objsocket.recv(1024)
     print("Servidor: "+recibido.decode(encoding="ascii", errors="ignore"))
 objsocket.close()

@@ -1,0 +1,3 @@
+Accion realizada : crear archivo => date and time:21:13:32
+Accion realizada : crear archivo => date and time:21:17:44
+Accion realizada : crear archivo => date and time:21:22:38

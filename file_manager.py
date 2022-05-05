@@ -9,7 +9,7 @@ port = 5001
 server = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
 server.bind((host,port))
 server.listen(1)
-print("Server is running waiting for connections")
+print("Server file manager is running waiting for connections")
 active_connection, address = server.accept()
 
 while(True):
@@ -18,8 +18,10 @@ while(True):
     error = 1
     if(message["action"]=="1"):
         error = os.system("mkdir "+message["value"])
-    else:
+    elif (message["action"]=="2"):
         error = os.system("touch "+message["value"])
+    elif (message["value"]=="off"):
+        break        
     print("Orden: "+recibido.decode(encoding="ascii", errors="ignore"))
     if(error != 0):
         enviar = "Ocurrio un error al ejecutar la acción de "+("crear carpeta" if message["action"] == "1" else "crear archivo")    
@@ -29,7 +31,7 @@ while(True):
     print(now)
     current_time = now.strftime("%H:%M:%S")
     f = open("log_file_manager.txt","a")
-    f.write(enviar+" => date and time:"+current_time+"\n")
+    f.write(enviar+" => time:"+current_time+"\n")
     f.close()
     active_connection.send(enviar.encode(encoding="ascii",errors="ignore"))
     
