@@ -15,6 +15,7 @@ active_connection, address = server.accept()
 while(True):
     recibido = active_connection.recv(1024)
     message = json.loads(recibido.decode(encoding="ascii", errors="ignore"))
+    print("ESTO ES LO QUE ESTÁ LLEGANDO \n",message)
     error = 1
     if(message["cmd"] == "start" and message["msg"]=="all"):
         print("FILE MANAGER STARTED")

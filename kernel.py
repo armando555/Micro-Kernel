@@ -43,12 +43,16 @@ while(True):
     #ACA TE DEBO PONER EL MENSAJE 
     #if (last_dst == "applications"):
         #recibido
+    print("ANTES DE MESSAGE")
     message = json.loads(recibido.decode(encoding="ascii", errors="ignore"))
+    print(message)
     if(message["cmd"]=="5"):
         enviar = json.dumps(message)
         objsocket2.send(enviar.encode(encoding="ascii", errors="ignore"))
         recibido = objsocket2.recv(1024)
+        #print(recibido.decode(encoding="ascii", errors="ignore"))
     #print("LLEGÓ AL KERNEL\n",message)
+    message = json.loads(recibido.decode(encoding="ascii", errors="ignore"))
     if(message["msg"] == "off"):
         message["dst"] = "applications"
         enviar = json.dumps(message)
