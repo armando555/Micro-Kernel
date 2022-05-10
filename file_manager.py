@@ -32,6 +32,7 @@ while(True):
         message["msg"] = log
         message["dst"] = "gui_user"
         message["src"] = "file_manager"
+        message = json.dumps(message)
         active_connection.send(message.encode(encoding="ascii",errors="ignore"))   
     else :
         log = "Accion realizada : "+("crear carpeta" if message["cmd"] == "1" else "crear archivo")
@@ -39,6 +40,7 @@ while(True):
         message["msg"] = log
         message["dst"] = "gui_user"
         message["src"] = "file_manager"
+        message = json.dumps(message)
         active_connection.send(message.encode(encoding="ascii",errors="ignore"))
     now = datetime.now()
     print(now)

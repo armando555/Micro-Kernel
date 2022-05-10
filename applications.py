@@ -38,6 +38,7 @@ while(True):
         message["msg"] = log
         message["dst"] = "gui_user"
         message["src"] = "applications"
+        message = json.dumps(message)
         active_connection.send(message.encode(encoding="ascii",errors="ignore"))
     else :
         log = "Accion realizada : "+("lanzar aplicacion" if message["cmd"] == "3" else "")
@@ -45,6 +46,7 @@ while(True):
         message["msg"] = log
         message["dst"] = "gui_user"
         message["src"] = "applications"
+        message = json.dumps(message)
         active_connection.send(message.encode(encoding="ascii",errors="ignore"))
     now = datetime.now()
     #print(enviar)
