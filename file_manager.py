@@ -23,7 +23,8 @@ while(True):
     if(message["cmd"]=="1"):
         error = os.system("mkdir "+message["msg"])
     elif (message["cmd"]=="2"):
-        error = os.system("touch "+message["msg"])
+        f = open(message["msg"],'w')
+
     elif (message["msg"]=="off"):
         break        
     print("Orden: "+recibido.decode(encoding="ascii", errors="ignore"))
