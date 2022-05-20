@@ -22,15 +22,15 @@ def handleConnection(recv):
     message = json.loads(recv)
     
     if(message["cmd"] == "1" or message["cmd"] == "2"):
+        message["action"] = "1" if message["cmd"] == "1" else "2"
+        message["cmd"] = "send"
         message["dst"] = "file_manager"
         enviar = json.dumps(message)
         active_connection.send(enviar.encode(encoding="ascii",errors="ignore"))
     if(message["cmd"] == "3"):
+        message["cmd"] = "send"
         message["dst"] = "applications"
-        enviar = json.dumps(message)
-        active_connection.send(enviar.encode(encoding="ascii",errors="ignore"))
-        
-    if(message["cmd"]=="send"):
+        message["action"] = "3"
         enviar = json.dumps(message)
         active_connection.send(enviar.encode(encoding="ascii",errors="ignore"))
 

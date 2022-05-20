@@ -1,5 +1,7 @@
 import socket
 import json
+import random
+import time
 host = "localhost"
 portF = 5001
 portA = 5002
@@ -19,6 +21,7 @@ message["src"] = "kernel"
 last_dst = ""
 count = 0
 while(True):
+    
     if((message["cmd"] == "start" and message["msg"]=="all") and count == 0):
         count = 1
         #Applications-------------------------------------------------------
@@ -43,10 +46,10 @@ while(True):
     #ACA TE DEBO PONER EL MENSAJE 
     #if (last_dst == "applications"):
         #recibido
-    print("ANTES DE MESSAGE")
+    #print("ANTES DE MESSAGE")
     message = json.loads(recibido.decode(encoding="ascii", errors="ignore"))
-    print(message)
-    if(message["cmd"]=="5"):
+    #print(message)
+    if(message["cmd"]=="send" and message["action"] == "5"):
         enviar = json.dumps(message)
         objsocket2.send(enviar.encode(encoding="ascii", errors="ignore"))
         recibido = objsocket2.recv(1024)
@@ -72,8 +75,12 @@ while(True):
         recibido = objsocket.recv(1024)
         print("Servidor: "+recibido.decode(encoding="ascii", errors="ignore"))
         break;
-    elif(message["cmd"] == "3"):
+    elif(message["cmd"] == "send" and message["dst"] == "applications"):
         print("VOY A ENVIAR APPLICATIONS")
+        time_operation = random.random()
+        if( time_operation >=0.99):
+            print("Kernel is busy--- wait a second")
+            time.sleep(3)
         message["dst"] = "applications"
         enviar = json.dumps(message)
         objsocket1.send(enviar.encode(encoding="ascii", errors="ignore"))
@@ -82,6 +89,10 @@ while(True):
         print("RECIBI DE APPLICATIONS")
     else:
         print("VOY A ENVIAR A FILE MANAGER")
+        time_operation = random.random()
+        if( time_operation >=0.99):
+            print("Kernel is busy--- wait a second")
+            time.sleep(3)
         message["dst"] = "file_manager"
         last_dst = "file_manager"
         enviar = json.dumps(message)
