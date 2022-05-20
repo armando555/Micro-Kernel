@@ -27,7 +27,7 @@ def handleConnection(recv):
         message["dst"] = "file_manager"
         enviar = json.dumps(message)
         active_connection.send(enviar.encode(encoding="ascii",errors="ignore"))
-    if(message["cmd"] == "3"):
+    if(message["cmd"] == "3" or message["cmd"] == "4"):
         message["action"] =  "3" if message["cmd"] == "3" else "4"
         message["cmd"] = "send"
         message["dst"] = "applications"
