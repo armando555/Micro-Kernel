@@ -28,9 +28,9 @@ def handleConnection(recv):
         enviar = json.dumps(message)
         active_connection.send(enviar.encode(encoding="ascii",errors="ignore"))
     if(message["cmd"] == "3"):
+        message["action"] =  "3" if message["cmd"] == "3" else "4"
         message["cmd"] = "send"
         message["dst"] = "applications"
-        message["action"] = "3"
         enviar = json.dumps(message)
         active_connection.send(enviar.encode(encoding="ascii",errors="ignore"))
 

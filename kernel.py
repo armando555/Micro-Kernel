@@ -18,6 +18,7 @@ message = {"cmd":"","msg":"","src":"","dst":""}
 message["cmd"] = "start"
 message["msg"] = "all"
 message["src"] = "kernel"
+message["action"] = "0"
 last_dst = ""
 count = 0
 while(True):
