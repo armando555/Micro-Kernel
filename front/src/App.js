@@ -38,10 +38,10 @@ class App extends Component {
       console.log(message.data);
     };
     client.addEventListener('message', (event) => {
-      console.log(event.data)
+      //console.log(event.data)
       this.setState({ logs: [...this.state.logs, event.data] })
-      
-      const jsonTemp = JSON.parse(event.data);
+      console.log(this.state.logs[this.state.logs.length -1])
+      const jsonTemp = JSON.parse(this.state.logs[this.state.logs.length -1])
       this.setState({ applicaciones: [...this.state.applicaciones, { pid: jsonTemp["pid"], app: jsonTemp["app"] }] })
 
     })
