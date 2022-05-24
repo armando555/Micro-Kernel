@@ -10,8 +10,8 @@ async def echo(websocket):
     async for message in websocket:
         print("gola ejej")
         print(message)
-        handleConnection(message)
-        await websocket.send(message)
+        retorno = handleConnection(message)
+        await websocket.send(retorno)
 
 async def main():
     async with websockets.serve(echo, "localhost", 7777):
@@ -20,7 +20,6 @@ async def main():
 
 def handleConnection(recv):
     message = json.loads(recv)
-    print(type(message))
     if(message["cmd"] == "1" or message["cmd"] == "2"):
         message["action"] = "1" if message["cmd"] == "1" else "2"
         message["cmd"] = "send"
@@ -30,21 +29,23 @@ def handleConnection(recv):
         active_connection.send(enviar.encode(encoding="ascii",errors="ignore"))
         message = active_connection.recv(1024)
         print("PASE DE RECIBIRLO")
-        print(type(message))
-        print(message)
         message = message.decode(encoding="ascii",errors="ignore")
-        print(type(message))
-        print(message)
+        
     elif(message["cmd"] == "3" or message["cmd"] == "4"):
+        print("")
         message["action"] =  "3" if message["cmd"] == "3" else "4"
         message["cmd"] = "send"
         message["dst"] = "applications"
         enviar = json.dumps(message)
         active_connection.send(enviar.encode(encoding="ascii",errors="ignore"))
-        #message = active_connection.recv(1024).decode(encoding="ascii",errors="ignore")
+        message = active_connection.recv(1024).decode(encoding="ascii",errors="ignore")
+        print("PASE DE RECIBIRLO")
     elif(message["action"] == "5"):
-        print(message)
+        print(message)  
 
+    return message
+
+    
 
 
 if __name__=='__main__':

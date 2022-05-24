@@ -50,6 +50,8 @@ class App extends Component {
 
     const options = [
       { value: 'calc', label: 'Calculadora' },
+      { value: 'notepad', label: 'Bloc de notas' }
+      
     ]
 
     const handleSelectOption = (selected) => {
@@ -128,13 +130,23 @@ class App extends Component {
         <button style={this.state.styleSheet.btnCrearDirectorio} onClick={() => {
           this.setState({ btnEjecturar: !this.state.btnEjecturar })
         }}>{this.state.btnEjecturar ? <>Cerrar</> : <>Ejecutar aplicación</>}</button>
-        {this.state.btnEjecturar ? <Select options={options} onChange={this.handleSelectOption} /> : <></>}
+        {this.state.btnEjecturar ? <><Select options={options} onChange={this.handleSelectOption} />
+          <button onClick={() => {
+            const data = {
+              cmd: "3",
+              msg: this.state.ejecutar,
+              scr: "gui_user",
+              dst: "applications",
+            }
+            client.send(JSON.stringify(data))
+          }}>Ejecutar</button>
+        </> : <></>}
 
 
         <ul>
 
           {
-            this.state.logs?.map(item => <li>{item}</li>)
+            this.state.logs?.map(item => <li>{JSON.parse(item)["msg"]}</li>)
           }
 
         </ul>

@@ -26,6 +26,10 @@ while(True):
         error = os.system("gnome-calculator &")
         #print (check_output(["pidof","gnome-calculator"]).decode()," THIS IS THE PID OF ",message["msg"])
         pid["calc"] = check_output(["pidof","gnome-calculator"]).decode()
+    elif(message["msg"]=="notepad" and message["action"] == 3):
+        error = os.system("notepad")
+        #print (check_output(["pidof","gnome-calculator"]).decode()," THIS IS THE PID OF ",message["msg"])
+        pid["notepad"] = check_output(["pidof","notepad"]).decode()
     elif(message["msg"]=="code" and message["action"] == 3):
         error = os.system("code &")
         #print (check_output(["pidof","code"]).decode()," THIS IS THE PID OF ",message["msg"])
