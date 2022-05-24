@@ -55,7 +55,7 @@ class App extends Component {
     ]
 
     const handleSelectOption = (selected) => {
-      this.setState({ ejecutar: selected })
+      this.setState({ ejecutar: selected.value })
     }
 
     return (
@@ -130,8 +130,9 @@ class App extends Component {
         <button style={this.state.styleSheet.btnCrearDirectorio} onClick={() => {
           this.setState({ btnEjecturar: !this.state.btnEjecturar })
         }}>{this.state.btnEjecturar ? <>Cerrar</> : <>Ejecutar aplicación</>}</button>
-        {this.state.btnEjecturar ? <><Select options={options} onChange={this.handleSelectOption} />
+        {this.state.btnEjecturar ? <><Select options={options} onChange={handleSelectOption} />
           <button onClick={() => {
+            console.log(this.state.ejecutar);
             const data = {
               cmd: "3",
               msg: this.state.ejecutar,

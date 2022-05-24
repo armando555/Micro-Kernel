@@ -167,3 +167,29 @@ Ocurrio un error al ejecutar la acci髇 de ejecutar aplicaci髇// => date and time
 Accion realizada : // => date and time:21:37:44
 Accion realizada : crear archivo=> time:21:37:44 => time:21:37:44
 Ocurrio un error al ejecutar la acci髇 de ejecutar aplicaci髇// => date and time:21:37:50
+Accion realizada : // => date and time:21:39:50
+Accion realizada : crear archivo=> time:21:39:50 => time:21:39:50
+Ocurrio un error al ejecutar la acci贸n de ejecutar aplicaci贸n// => date and time:21:40:48
+Ocurrio un error al ejecutar la acci贸n de ejecutar aplicaci贸n// => date and time:21:42:58
+Ocurrio un error al ejecutar la acci贸n de ejecutar aplicaci贸n// => date and time:21:43:35
+Accion realizada : // => date and time:21:44:00
+Accion realizada : crear archivo=> time:21:44:00 => time:21:44:00
+Ocurrio un error al ejecutar la acci贸n de ejecutar aplicaci贸n// => date and time:21:44:06
+Accion realizada : // => date and time:21:46:19
+Accion realizada : crear archivo=> time:21:46:19 => time:21:46:19
+Accion realizada : lanzar aplicacion// => date and time:21:46:28
+Accion realizada : // => date and time:21:47:36
+Accion realizada : crear archivo=> time:21:47:36 => time:21:47:36
+Accion realizada : lanzar aplicacion// => date and time:21:47:45
+Accion realizada : crear archivo=> time:21:50:59 => time:21:50:59
+Accion realizada : crear archivo=> time:21:52:11 => time:21:52:11
+Accion realizada : crear archivo=> time:21:54:50 => time:21:54:50
+Accion realizada : crear archivo=> time:21:56:37 => time:21:56:37
+Accion realizada : // => date and time:21:58:15
+Accion realizada : crear archivo=> time:21:58:15 => time:21:58:15
+Accion realizada : lanzar aplicacion// => date and time:21:58:23
+Accion realizada : lanzar aplicacion// => date and time:21:58:45
+Accion realizada : // => date and time:21:59:13
+Accion realizada : crear archivo=> time:21:59:13 => time:21:59:13
+Accion realizada : lanzar aplicacion// => date and time:21:59:19
+Accion realizada : lanzar aplicacion// => date and time:21:59:27
