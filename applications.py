@@ -59,7 +59,7 @@ while(True):
     #print(enviar)
     current_time = now.strftime("%H:%M:%S")
     f = open("log_file_manager.txt","a")
-    f.write(log+ "//" + pid+ " => date and time:"+current_time+"\n")
+    f.write(log+ "//"+" => date and time:"+current_time+"\n")
     f.close()
     #print("HOLI2")
     

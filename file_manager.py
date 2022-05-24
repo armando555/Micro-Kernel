@@ -38,7 +38,10 @@ while(True):
         message = json.dumps(message)
         active_connection.send(message.encode(encoding="ascii",errors="ignore"))   
     else :
-        log = "Accion realizada : "+("crear carpeta" if message["action"] == "1" else "crear archivo")
+        now = datetime.now()
+        #print(now)
+        current_time = now.strftime("%H:%M:%S")
+        log = "Accion realizada : "+("crear carpeta" if message["action"] == "1" else "crear archivo")+"=> time:"+current_time
         message["cmd"] = "send"
         message["action"] = "5"
         message["msg"] = log
@@ -47,7 +50,7 @@ while(True):
         message = json.dumps(message)
         active_connection.send(message.encode(encoding="ascii",errors="ignore"))
     now = datetime.now()
-    print(now)
+    #print(now)
     current_time = now.strftime("%H:%M:%S")
     f = open("log_file_manager.txt","a")
     f.write(log+" => time:"+current_time+"\n")
