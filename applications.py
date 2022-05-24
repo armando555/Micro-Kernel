@@ -60,6 +60,7 @@ while(True):
         message["action"] = "5"
         message["msg"] = log+" => date and time:"+current_time+" app: "+app+" pid: "+pid[app]
         message["dst"] = "gui_user"
+        message["pid"] = {"app":app,"pid":pid[app]}
         message["src"] = "applications"
         message = json.dumps(message)
         active_connection.send(message.encode(encoding="ascii",errors="ignore"))
