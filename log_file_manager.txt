@@ -196,3 +196,19 @@ Accion realizada : lanzar aplicacion// => date and time:21:59:27
 Accion realizada : // => date and time:22:09:05
 Accion realizada : crear archivo=> time:22:09:05 => time:22:09:05
 Accion realizada : lanzar aplicacion// => date and time:22:09:29
+Accion realizada : // => date and time:22:13:17
+Accion realizada : crear archivo=> time:22:13:17 => time:22:13:17
+Ocurrio un error al ejecutar la acción de ejecutar aplicación// => date and time:22:13:24
+Accion realizada : // => date and time:22:14:16
+Accion realizada : crear archivo=> time:22:14:16 => time:22:14:16
+Accion realizada : // => date and time:22:14:42
+Accion realizada : crear archivo=> time:22:14:42 => time:22:14:42
+Ocurrio un error al ejecutar la acción de ejecutar aplicación// => date and time:22:14:48
+Accion realizada : // => date and time:22:15:38
+Accion realizada : crear archivo=> time:22:15:38 => time:22:15:38
+Accion realizada : // => date and time:22:16:58
+Accion realizada : crear archivo=> time:22:16:58 => time:22:16:58
+Accion realizada : // => date and time:22:18:47
+Accion realizada : crear archivo=> time:22:18:47 => time:22:18:47
+Accion realizada : // => date and time:22:19:29
+Accion realizada : crear archivo=> time:22:19:29 => time:22:19:29

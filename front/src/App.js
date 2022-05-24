@@ -13,6 +13,7 @@ class App extends Component {
     super();
     this.state = {
       logs: [],
+      applicaciones: [],
       btnDirectorio: false,
       directorio: "",
       btnArchivo: false,
@@ -37,7 +38,11 @@ class App extends Component {
       console.log(message.data);
     };
     client.addEventListener('message', (event) => {
+      console.log(event.data)
       this.setState({ logs: [...this.state.logs, event.data] })
+      
+      const jsonTemp = JSON.parse(event.data);
+      this.setState({ applicaciones: [...this.state.applicaciones, { pid: jsonTemp["pid"], app: jsonTemp["app"] }] })
 
     })
 
@@ -51,7 +56,7 @@ class App extends Component {
     const options = [
       { value: 'calc', label: 'Calculadora' },
       { value: 'notepad', label: 'Bloc de notas' }
-      
+
     ]
 
     const handleSelectOption = (selected) => {
@@ -148,6 +153,14 @@ class App extends Component {
 
           {
             this.state.logs?.map(item => <li>{JSON.parse(item)["msg"]}</li>)
+          }
+
+        </ul>
+
+        <ul>
+
+          {
+            this.state.applicaciones?.map(item => <li>{item["app"]}</li>)
           }
 
         </ul>

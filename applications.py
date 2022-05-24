@@ -30,6 +30,11 @@ while(True):
         #print (check_output(["pidof","gnome-calculator"]).decode()," THIS IS THE PID OF ",message["msg"])
         pid["calc"] = check_output(["pidof","gnome-calculator"]).decode()
         app="calc"
+    elif(message["msg"]=="notepad" and message["action"] == "3"):
+        error = os.system("notepad")
+        #print (check_output(["pidof","gnome-calculator"]).decode()," THIS IS THE PID OF ",message["msg"])
+        pid["notepad"] = check_output(["pidof","notepad"]).decode()
+        app="notepad"
     elif(message["msg"]=="code" and message["action"] == "3"):
         error = os.system("code &")
         #print (check_output(["pidof","code"]).decode()," THIS IS THE PID OF ",message["msg"])
