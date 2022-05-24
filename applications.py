@@ -22,27 +22,34 @@ while(True):
         error = 0
     if(message["msg"]=="off"):
         break
-    if(message["msg"]=="calc"):
+    if(message["msg"]=="calc" and message["action"] == 3):
         error = os.system("gnome-calculator &")
         #print (check_output(["pidof","gnome-calculator"]).decode()," THIS IS THE PID OF ",message["msg"])
         pid["calc"] = check_output(["pidof","gnome-calculator"]).decode()
-    elif(message["msg"]=="code"):
+    elif(message["msg"]=="code" and message["action"] == 3):
         error = os.system("code &")
         #print (check_output(["pidof","code"]).decode()," THIS IS THE PID OF ",message["msg"])
         pid["code"] = check_output(["pidof","code"]).decode()
+    elif(message["msg"]=="code" and message["action"] == 4):
+        error = os.system("kill "+pid["code"])
+    elif(message["msg"]=="calc" and message["action"] == 4):
+        error = os.system("kill "+pid["calc"])
     print("Orden: "+recibido.decode(encoding="ascii", errors="ignore"))
     print(pid)
     if(error != 0):
-        log = "Ocurrio un error al ejecutar la acción de "+("crear carpeta" if message["cmd"] == "1" else "ejecutar aplicación")    
-        message["cmd"] = "5"
+        log = "Ocurrio un error al ejecutar la acción de "+("crear carpeta" if message["action"] == "1" else "ejecutar aplicación")    
+        message["cmd"] = "send"
+        message["action"] = "5"
         message["msg"] = log
         message["dst"] = "gui_user"
         message["src"] = "applications"
         message = json.dumps(message)
         active_connection.send(message.encode(encoding="ascii",errors="ignore"))
     else :
-        log = "Accion realizada : "+("lanzar aplicacion" if message["cmd"] == "3" else "")
-        message["cmd"] = "5"
+        #+ message["msg"] + pid[message["msg"]]
+        log = "Accion realizada : "+("lanzar aplicacion" if message["action"] == "3" else "") 
+        message["cmd"] = "send"
+        message["action"] = "5"
         message["msg"] = log
         message["dst"] = "gui_user"
         message["src"] = "applications"
@@ -52,7 +59,7 @@ while(True):
     #print(enviar)
     current_time = now.strftime("%H:%M:%S")
     f = open("log_file_manager.txt","a")
-    f.write(log+" => date and time:"+current_time+"\n")
+    f.write(log+ "//" + pid+ " => date and time:"+current_time+"\n")
     f.close()
     #print("HOLI2")
     
